@@ -1,0 +1,22 @@
+{
+    "FIND_MAX_PROTOCOL": {
+        "inputs": {
+            "a": "integer",
+            "b": "integer",
+            "c": "integer"
+        },
+        "constraints": [
+            "values may be negative",
+            "values may be equal",
+            "system must return largest value"
+        ],
+        "edge_cases": [
+            [0, 0, 0],
+            [-1, -5, -10],
+            [1000, 1000, 999],
+            [10, 5, 3],
+            [3, 9, 1],
+            [2, 4, 7]
+        ]
+    }
+}

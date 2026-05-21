@@ -1,0 +1,9 @@
+lizard
+radon
+pytest
+coverage
+psutil
+GitPython
+openai>=1.0.0
+requests
+
