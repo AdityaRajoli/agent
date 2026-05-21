@@ -9,11 +9,14 @@ def publish_pr_review(pr_number, verdict, comments, metrics):
         print("Missing GitHub context. Printing review locally:")
         print(f"\n{'='*50}")
         print(f"PR REVIEW: {verdict}")
-        print(f"Coverage       : {metrics['coverage']}%")
-        print(f"Complexity     : {metrics['complexity']}")
-        print(f"Execution Time : {metrics['execution_time_sec']}s")
-        print(f"CPU            : {metrics['cpu_percent']}%")
-        print(f"RAM            : {metrics['ram_percent']}%")
+        print(f"Coverage         : {metrics['coverage']}%")
+        print(f"Complexity       : {metrics['complexity']}")
+        print(f"Execution Time   : {metrics['execution_time_sec']}s")
+        print(f"CPU              : {metrics['cpu_percent']}%")
+        print(f"RAM              : {metrics['ram_percent']}%")
+        print(f"RMA Utilization  : {metrics['rma_utilization']}%")
+        print(f"RMA Threshold    : {metrics['rma_threshold']}%")
+        print(f"RMA Status       : {'✅ OK' if metrics['rma_utilization'] <= metrics['rma_threshold'] else '❌ Exceeded'}")
         if comments:
             print("\nReview Notes:")
             for comment in comments:
@@ -30,7 +33,9 @@ def publish_pr_review(pr_number, verdict, comments, metrics):
     body  = f"### AI Autonomous Review: {verdict}\n\n"
     body += f"**Coverage:** {metrics['coverage']}%\n"
     body += f"**Complexity:** {metrics['complexity']}\n"
-    body += f"**Execution Time:** {metrics['execution_time_sec']}s\n\n"
+    body += f"**Execution Time:** {metrics['execution_time_sec']}s\n"
+    body += f"**RMA Utilization:** {metrics['rma_utilization']}%\n"
+    body += f"**RMA Threshold:** {metrics['rma_threshold']}%\n\n"
 
     if comments:
         body += "#### Review Notes:\n"
